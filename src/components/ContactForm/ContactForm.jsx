@@ -1,29 +1,35 @@
 import css from "./ContactForm.module.css";
-import { Form, Formik, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 
-const ContactForm = ({ onAdd }) => {
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
+
+const ContactForm = () => {
   const nameFieldId = nanoid();
   const numberFieldId = nanoid();
+  const dispatch = useDispatch();
 
   const ContactsSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Too Short!")
-      .max(50, "Too long!")
+      .max(50, "Too Long!")
       .required("Required"),
     number: Yup.string()
       .min(3, "Too Short!")
-      .max(50, "Too long!")
+      .max(50, "Too Long!")
       .required("Required"),
   });
 
   const handleSubmit = (values, actions) => {
-    onAdd({
-      id: nanoid(),
-      name: values.name,
-      number: values.number,
-    });
+    dispatch(
+      addContact({
+        id: nanoid(),
+        name: values.name,
+        number: values.number,
+      })
+    );
     actions.resetForm();
   };
 
@@ -61,4 +67,5 @@ const ContactForm = ({ onAdd }) => {
     </Formik>
   );
 };
+
 export default ContactForm;

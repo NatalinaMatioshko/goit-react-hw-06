@@ -31,3 +31,7 @@
   transition: background-color 0.3s ease-in-out;
   align-self: center;
 }
+
+.btn:hover {
+  background-color: lightblue;
+}

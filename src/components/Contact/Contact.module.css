@@ -1,9 +1,9 @@
 .box {
-  width: calc((100% - 45px) / 6);
+  width: calc((100% - 45px) / 4);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid black;
+  border: 2px solid rgba(50, 50, 50, 0.845);
   border-radius: 10px;
   padding: 15px 20px;
 }
@@ -22,7 +22,7 @@
 }
 
 .icon {
-  fill: blue;
+  fill: green;
 }
 
 .btn {
@@ -36,5 +36,5 @@
 }
 
 .btn:hover {
-  background-color: lightblue;
+  background-color: green;
 }
